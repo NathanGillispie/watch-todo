@@ -1,0 +1,147 @@
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  --timeline-color: #e21d3c;
+  --background-color: #111;
+  --foreground-color: #fff;
+  --gray-200: #2d2d2d;
+  --gray-300: #3a3a3a;
+  --gray-400: #5c5c5c;
+  --out-back: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.card {
+  padding: 2em;
+}
+
+.TimelineContainer {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	width: min(570px, 90%);
+	margin: 0 auto .9rem;
+	padding: 1.2rem .9rem 1rem;
+	border-radius: 16px;
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+
+	transition: opacity 200ms ease-out, transform 200ms ease-out;
+	opacity: 0.1;
+	transform: translate(0, 4px);
+}
+
+.TimelineContainer:hover {
+	opacity: 1;
+	transform: translate(0, 0);
+}
+
+.TimelineControls {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.PlayButton,
+.SpeedButton {
+	border: 2px solid transparent;
+	border-radius: 999px;
+	padding: 0.25rem 0.5rem;
+	background: var(--gray-200);
+	color: inherit;
+	cursor: pointer;
+	font-size: 0.95rem;
+	transition: transform 0.15s ease, background-color 0.15s ease;
+	outline: none;
+}
+
+.PlayButton {
+	display: inline-flex;
+	align-items: center;
+}
+
+.PlayButton:hover,
+.SpeedButton:hover {
+	transform: scale(1.333, 1), translate(-5%, -5%);
+	background-color: var(--gray-300);
+}
+
+.SpeedButtons {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.SpeedButton.is-active {
+	background: var(--gray-400);
+}
+
+.TimelineTrack {
+	position: relative;
+	height: 6px;
+	border-radius: 999px;
+	background-color: var(--gray-200);
+	cursor: pointer;
+	transform-origin: center;
+	transition: transform 150ms ease;
+	margin: 0 0.6rem;
+}
+
+.TimelineTrack:hover {
+	transform: scale(1, 1.333);
+}
+
+.TimelineBase,
+.TimelineProgress,
+.TimelineHover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	border-radius: inherit;
+}
+
+.TimelineBase {
+	width: 100%;
+	background-color: transparent;
+}
+
+.TimelineProgress {
+	background-color: var(--timeline-color);
+}
+
+.TimelineHover {
+	background-color: var(--gray-400);
+	opacity: 1;
+	transition: opacity 130ms ease-out;
+}
+
+.ScrubberButton {
+	position: absolute;
+	top: 50%;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	background-color: var(--timeline-color);
+
+	transition: transform 150ms linear;
+	transform: translate(-50%, -50%) scale(1);
+}
+
+.TimelineTrack:hover + .ScrubberButton {
+	transform: translate(-50%, -50%) scale(1.333, 1);
+}
+
+.playImg {
+	width: .9rem;
+}
