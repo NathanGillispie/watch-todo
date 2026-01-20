@@ -3,6 +3,9 @@ import playSvg from './assets/play.svg';
 import pauseSvg from './assets/pause.svg';
 import './App.css';
 
+import { Editor } from './components/Editor';
+import './userWorker';
+
 function Timeline({ time, setTime }) {
 	const trackRef = useRef(null);
 	const [ isDragging, setIsDragging ] = useState(false);
@@ -126,12 +129,7 @@ function App() {
 
   return (
     <>
-      <h1>TODO PLAYER</h1>
-      <div className="card">
-        <p>
-					To be continued...
-        </p>
-      </div>
+			<Editor />
 			<Timeline time={time} setTime={setTime}/>
     </>
   )

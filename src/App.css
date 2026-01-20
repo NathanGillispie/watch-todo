@@ -1,9 +1,8 @@
 
 #root {
+	overflow: none;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -36,14 +35,12 @@
 	flex-direction: column;
 	gap: 0.75rem;
 
-	transition: opacity 200ms ease-out, transform 200ms ease-out;
+	transition: opacity 200ms ease-out;
 	opacity: 0.1;
-	transform: translate(0, 4px);
 }
 
 .TimelineContainer:hover {
 	opacity: 1;
-	transform: translate(0, 0);
 }
 
 .TimelineControls {
@@ -125,21 +122,29 @@
 	opacity: 1;
 	transition: opacity 130ms ease-out;
 }
+@media (max-width: 600px) {
+	.TimelineHover {
+		opacity: 0;
+	}
+}
 
 .ScrubberButton {
 	position: absolute;
 	top: 50%;
-	width: 15px;
-	height: 15px;
+	width: 12px;
+	height: 12px;
 	border-radius: 50%;
 	background-color: var(--timeline-color);
 
-	transition: transform 150ms linear;
+	transition: transform 150ms ease;
 	transform: translate(-50%, -50%) scale(1);
+	z-index: 10;
 }
 
-.TimelineTrack:hover + .ScrubberButton {
-	transform: translate(-50%, -50%) scale(1.333, 1);
+.TimelineTrack:hover{
+	.ScrubberButton {
+		transform: translate(-50%, -50%) scale(1.333, 1);
+	}
 }
 
 .playImg {

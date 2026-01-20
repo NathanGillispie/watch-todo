@@ -1,0 +1,6 @@
+.Editor {
+	width: 100vw;
+	height: 100vh;
+	resize: vertical;
+  overflow: auto;
+}
